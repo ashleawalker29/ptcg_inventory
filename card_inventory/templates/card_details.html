@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h1>{{ set_name }}</h1>
+    <table>
+        <tr>
+            <th>Set Number</th>
+            <th>Card Name</th>
+            <th>Card Type</th>
+            <th>Quantity -- Normal</th>
+            <th>Quantity -- Reverse</th>
+            <th>Quantity -- Holo</th>
+        </tr>
+        {% for o in card_objs %}
+            <tr>
+                <td>{{ o.card_number }}</td>
+                <td>{{ o.card_name }}</td>
+                <td>{{ o.card_type }}</td>
+                <td>{{ o.quantity_normal }}</td>
+                <td>{{ o.quantity_reverse }}</td>
+                <td>{{ o.quantity_holo }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
