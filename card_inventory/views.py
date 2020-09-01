@@ -7,5 +7,5 @@ def card_details_by_set(request, set_name):
     cards = Cards.objects.filter(set_name=set_name_clean)
 
     return render(request, 'card_details.html',
-        {'card_objs': cards,
+        {'cards': cards,
          'set_name': set_name_clean})
