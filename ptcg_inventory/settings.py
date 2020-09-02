@@ -28,7 +28,7 @@ try:
 except:
     SECRET_KEY = ''
 
-if SECRET_KEY = '':
+if SECRET_KEY == '':
     try:
         os.environ.get('SECRET_KEY')
     except:
