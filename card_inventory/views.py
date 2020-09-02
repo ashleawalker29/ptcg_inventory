@@ -8,12 +8,12 @@ def sets_index(request):
 
     # Transform each set name into a link and save as a dictionary item
     for s in sets:
-        s['set_link'] = s['set_name'].replace(' ', '_').lower()
+        s['set_link'] = s['set_name'].replace(' ', '_')
 
     return render(request, 'sets_index.html', {'sets': sets})
 
 def card_details_by_set(request, set_name):
-    set_name_clean = set_name.replace('_', ' ').title()
+    set_name_clean = set_name.replace('_', ' ')
     cards = Cards.objects.filter(set_name=set_name_clean)
 
     return render(request, 'card_details.html',
