@@ -26,6 +26,9 @@ try:
     with open('../ptcg_secret_key.txt') as f:
         SECRET_KEY = f.read().strip()
 except:
+    SECRET_KEY = ''
+
+if SECRET_KEY = '':
     try:
         os.environ.get('SECRET_KEY')
     except:
