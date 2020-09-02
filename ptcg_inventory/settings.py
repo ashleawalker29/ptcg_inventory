@@ -23,16 +23,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
-    with open('../ptcg_secret_key.txt') as f:
-        SECRET_KEY = f.read().strip()
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 except:
     SECRET_KEY = ''
-
-if SECRET_KEY == '':
-    try:
-        os.environ.get('SECRET_KEY')
-    except:
-        SECRET_KEY = ''
 
 # Heroku based environment variables
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
