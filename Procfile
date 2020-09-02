@@ -1,1 +1,4 @@
-web: gunicorn ptcg_inventory.wsgi --log-file -
+web: gunicorn ptcg_inventory.wsgi --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
+
