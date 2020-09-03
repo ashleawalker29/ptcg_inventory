@@ -5,11 +5,11 @@
     <div class='row'>
         {% for set in sets %}
             <div class='col' style='padding-bottom: 2rem;'>
-                <div class='card' style='width: 20rem; height: 32rem; padding-bottom: 2rem; padding-top: 2rem;'>
-                    <div style='min-height: 14rem;'>
-                        <img src='{{ set.logo_url }}' class='card-img-top' style='width: 18rem; height: auto; padding-top: 2rem; padding-left: 2rem; padding-bottom: 2rem;'>
+                <div class='card' style='width: 22rem; height: 40rem; padding-bottom: 2rem; padding-top: 2rem;'>
+                    <div style='height: 22rem; width: 22rem; text-align: center;'>
+                        <img src='{{ set.logo_url }}' class='card-img-top' style='width: 22rem; height: auto; object-fit: scale-down; padding-left: 1rem;padding-right: 1rem;'>
                     </div>
-                    <div class='card-body'>
+                    <div class='card-body' style='padding-top: 2rem;'>
                         <div class='container'>
                             <div class='row'>
                                 <div class='col'>
@@ -18,9 +18,26 @@
                                 <div class='col'>
                                     <h5 class='card-title'>{{ set.name }}</h5>
                                     <p class='card-text'>Release Date {{ set.release_date }}</p>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col'>
+                                    <div class='rounded-circle border' style='height: 4rem; width: 4rem; display: flex; align-items: center; justify-content: center;'>
+                                        <p class='card-text'>{{ set.quantity_normal }}</p>
+                                    </div>
+                                </div>
+                                <div class='col'>
+                                    <div class='rounded-circle border' style='height: 4rem; width: 4rem; display: flex; align-items: center; justify-content: center;'>
+                                        <p class='card-text'>{{ set.quantity_reverse }}</p>
+                                    </div>
+                                </div>
+                                <div class='col'>
+                                    <div class='rounded-circle border' style='height: 4rem; width: 4rem; display: flex; align-items: center; justify-content: center;'>
+                                        <p class='card-text'>{{ set.quantity_holo }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <a href='{{ set.link }}' class='stretched-link'></a>
                     </div>
                 </div>
