@@ -12,10 +12,10 @@ def sets_index(request):
 
     return render(request, 'sets_index.html', {'sets': sets})
 
-def card_details_by_set(request, set_name):
+def cards_by_set(request, set_name):
     set_name_clean = set_name.replace('_', ' ')
     cards = Cards.objects.filter(set_name=set_name_clean)
 
-    return render(request, 'card_details.html',
+    return render(request, 'cards_by_set.html',
         {'cards': cards,
          'set_name': set_name_clean})
