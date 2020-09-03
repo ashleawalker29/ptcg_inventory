@@ -10,7 +10,9 @@ def sets_index(request):
     for s in sets:
         s['set_link'] = s['set_name'].replace(' ', '_')
 
-    return render(request, 'sets_index.html', {'sets': sets})
+    return render(request, 'sets_index.html',
+        {'title':'PTCG Sets',
+         'sets': sets})
 
 def card_details_by_set(request, set_name):
     set_name_clean = set_name.replace('_', ' ')

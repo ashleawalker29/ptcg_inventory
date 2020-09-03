@@ -1,7 +1,14 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block navbar_title %} {{ title }} {% endblock %}
+
+{% block navbar_dropdown %}
+    {% for set in sets %}
+        <li class='nav-item'>
+            <a href='{{ set.set_link }}' class='nav-link'>{{ set.set_name }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}
 
 {% block page_content %}
-    {% for set in sets %}
-        <a href='{{ set.set_link }}' class='btn btn-primary list-group-item active' role='button' aria-pressed='true'>{{ set.set_name }}</a>
-    {% endfor %}
 {% endblock %}
