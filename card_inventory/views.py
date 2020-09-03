@@ -1,14 +1,13 @@
 from django.shortcuts import render
+import pokemontcgsdk
 
 from card_inventory.models import Cards
 
 def sets_index(request):
-    # Get all unique set names
-    sets = Cards.objects.order_by().values('set_name').distinct()
-
-    # Transform each set name into a link and save as a dictionary item
-    for s in sets:
-        s['set_link'] = s['set_name'].replace(' ', '_')
+    sets = [{'name': Set.name, 'link': Set.name.replace(' ', '_'),
+             'series': Set.series, 'release_date': Set.release_date,
+             'logo_url': Set.logo_url, 'symbol_url': Set.symbol_url}
+            for Set in pokemontcgsdk.Set.all()]
 
     return render(request, 'sets_index.html', {'sets': sets})
 
