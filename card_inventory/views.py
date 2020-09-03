@@ -1,14 +1,25 @@
 from django.shortcuts import render
+import pokemontcgsdk
 
 from card_inventory.models import Cards
 
 def sets_index(request):
-    # Get all unique set names
-    sets = Cards.objects.order_by().values('set_name').distinct()
+    sets = [{'name': Set.name, 'link': Set.name.replace(' ', '_'),
+             'series': Set.series, 'release_date': Set.release_date,
+             'logo_url': Set.logo_url, 'symbol_url': Set.symbol_url}
+            for Set in pokemontcgsdk.Set.all()]
 
-    # Transform each set name into a link and save as a dictionary item
     for s in sets:
-        s['set_link'] = s['set_name'].replace(' ', '_')
+        try:
+            quantity_normal = sum([card.quantity_normal for card in Cards.objects.filter(set_name=s['name'])])
+            quantity_reverse = sum([card.quantity_reverse for card in Cards.objects.filter(set_name=s['name'])])
+            quantity_holo = sum([card.quantity_holo for card in Cards.objects.filter(set_name=s['name'])])
+        except:
+            quantity_normal, quantity_reverse, quantity_holo = None, None, None
+
+        s['quantity_normal'] = quantity_normal
+        s['quantity_reverse'] = quantity_reverse
+        s['quantity_holo'] = quantity_holo
 
     return render(request, 'sets_index.html', {'sets': sets})
 
