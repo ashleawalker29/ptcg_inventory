@@ -11,21 +11,22 @@ My personal collection of cards is visually displayed on the homepage via the Po
 
 ## Features
 ### Homepage
+[Production Link](https://ptcg-inventory.herokuapp.com/)
+
 An overview of my personal collection is displayed on this page, organized by the Pokémon card sets. 
 Each set has three bubbles that give a quick glance into the number of cards owned in that set. The 
 bubbles, from left to right on each set, represent the total number of normal, reverse foil, and holo 
 foil cards.
 
 ### Subpages
+[Production Link for Base Set](https://ptcg-inventory.herokuapp.com/Base/)
+
 There is a subpage for each set that includes a table of owned cards. As of publishing this README, the 
 tables do not include cards that are unowned. In the future, these subpages should visually display the 
 collection using the cards' images instead of the tables. 
 
 # Badges
 <!-- This should include testing coverage, build status, etc. -->
-
-# Visuals
-<!-- Include screenshots of the project, or possibly some gifs. -->
 
 # Installation
 <!-- Provide step-by-step instructions on how to install the project locally. -->
