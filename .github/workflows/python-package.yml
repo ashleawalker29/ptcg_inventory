@@ -43,9 +43,9 @@ jobs:
         # exit-zero treats all errors as warnings.
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
 
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '11'
+    - name: psycopg2 prerequisites
+      run: |
+        sudo apt-get install python-dev libpq-dev
 
     - name: Run migrations
       run: |
