@@ -32,8 +32,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
 
     - name: Run Django Tests
-      with:
-        token: ${{ secrets.SECRET_KEY }}
-        file: ./settings.py
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         python3 manage.py test -v 2
