@@ -58,4 +58,4 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         pip install pytest-django
-        pytest -v
+        py.test -v
