@@ -70,14 +70,50 @@ the Base set.
 <!-- This should include testing coverage, build status, etc. -->
 
 # Installation
-<!-- Provide step-by-step instructions on how to install the project locally. -->
-<!-- This should also include how to run tests locally, how to run the local server, etc. -->
+Clone this repository locally. Navigate to the root directory and then run through the following steps.
 
-<!-- Subsections to include. -->
-<!-- Requirements -->
-<!-- This should explain how to install a virtual environment and how to install from a requirements.txt -->
-<!-- Tests -->
-<!-- Describe how to run all the applicable tests with code examples. -->
-<!-- How to Use -->
-<!-- Explain how one can use the project for themselves. -->
-        
+## Virtual Environment
+Running this Django project will require setting up a virtual environment (venv). This is a tool that helps to keep this project's dependencies separate from your other projects.
+
+To create a venv, run the following from the root directory:
+``` bash
+$ sudo pip3 install virtualenv
+$ virtualenv ptcg_env
+```
+This creates a venv named `ptcg_env`.
+
+### Activate the Virtual Environment
+To actually use the venv, activate it using the following command:
+``` bash
+$ source ptcg_env/bin/activate
+```
+
+### Deactivate the Virtual Environment
+To leave the venv, deactivate it using the following command:
+``` bash
+$ deactivate
+```
+
+## Requirements
+All requirements are included in `requirements.txt`. Within your venv run the following:
+``` bash
+$ pip3 install -r requirements.txt
+```
+This installs the required packages within your venv.
+
+## Testing
+To run all tests locally, run the following command:
+``` bash
+$ python3 manage.py test
+```
+
+## Local Database
+You will need your own local database to connect to the django framework. To set this up, run the following commands:
+``` sql
+$ psql
+$ CREATE DATABASE ptcg_inventory;
+$ CREATE USER <username> WITH PASSWORD <password>;
+$ GRANT ALL PRIVLEGES ON DATABASES ptcg_inventory TO <username>;
+$ \q
+$ python3 manage.py migrate
+```
