@@ -48,6 +48,8 @@ jobs:
         sudo apt-get install python-dev libpq-dev
 
     - name: Run migrations
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         python manage.py migrate
 
