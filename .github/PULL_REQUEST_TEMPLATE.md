@@ -1,12 +1,3 @@
----
-name: Pull request
-about: Open a pull request related to a created issue.
-title: "[PR]"
-labels: 'Status: Available'
-assignees: ''
-
----
-
 <!--- Provide a general summary of your changes in the Title above -->
 
 ## Description
