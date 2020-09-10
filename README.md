@@ -70,6 +70,12 @@ the Base set.
 <!-- This should include testing coverage, build status, etc. -->
 
 # Installation
+
+## Requirements
+All requirements are included in `requirements.txt`. Within your virtual environment run the following:
+``` bash
+$ pip3 install -r requirements.txt
+```
 <!-- Provide step-by-step instructions on how to install the project locally. -->
 <!-- This should also include how to run tests locally, how to run the local server, etc. -->
 
