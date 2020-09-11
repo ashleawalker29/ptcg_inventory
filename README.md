@@ -5,6 +5,7 @@ manner than a spreadsheet.
 ## Status
 ![Master Workflow](https://github.com/ashleawalker29/ptcg_inventory/workflows/Master%20Workflow/badge.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory/badge)](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory)
+[![codecov](https://codecov.io/gh/ashleawalker29/ptcg_inventory/branch/master/graph/badge.svg)](https://codecov.io/gh/ashleawalker29/ptcg_inventory)
 
 # Description
 A production version of the project's webpage can be found at 
