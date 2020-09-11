@@ -23,11 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-try:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-except KeyError:
-    error_message = 'The environment variable "SECRET_KEY" is not set.'
-    raise ImproperlyConfigured(error_message)
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # Heroku based environment variables
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
