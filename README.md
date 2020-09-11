@@ -67,7 +67,7 @@ This example row indicates that the collection includes one (1) normal copy of a
 the Base set.
 
 # Badges
-<!-- This should include testing coverage, build status, etc. -->
+[![CodeFactor](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory/badge)](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory)
 
 # Installation
 Clone this repository locally. Navigate to the root directory and then run through the following steps.
