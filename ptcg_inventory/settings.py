@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -24,8 +25,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-except:
-    SECRET_KEY = ''
+except KeyError:
+    error_message = 'The environment variable "SECRET_KEY" is not set.'
+    raise ImproperlyConfigured(error_message)
 
 # Heroku based environment variables
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
