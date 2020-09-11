@@ -2,6 +2,10 @@
 This project is dedicated to displaying my personal collection of Pokémon cards in a more visual 
 manner than a spreadsheet.
 
+## Status
+![Master Workflow](https://github.com/ashleawalker29/ptcg_inventory/workflows/Master%20Workflow/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory/badge)](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory)
+
 # Description
 A production version of the project's webpage can be found at 
 [https://ptcg-inventory.herokuapp.com/](https://ptcg-inventory.herokuapp.com/)
@@ -65,9 +69,6 @@ these types include `Grass`, `Fire`, `Water`, etc.
 
 This example row indicates that the collection includes one (1) normal copy of a Psychic Alakazam card from
 the Base set.
-
-# Badges
-[![CodeFactor](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory/badge)](https://www.codefactor.io/repository/github/ashleawalker29/ptcg_inventory)
 
 # Installation
 Clone this repository locally. Navigate to the root directory and then run through the following steps.
