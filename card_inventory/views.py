@@ -10,16 +10,12 @@ def sets_index(request):
             for Set in pokemontcgsdk.Set.all()]
 
     for s in sets:
-        try:
-            quantity_normal = sum([card.quantity_normal for card in Cards.objects.filter(set_name=s['name'])])
-            quantity_reverse = sum([card.quantity_reverse for card in Cards.objects.filter(set_name=s['name'])])
-            quantity_holo = sum([card.quantity_holo for card in Cards.objects.filter(set_name=s['name'])])
-        except:
-            quantity_normal, quantity_reverse, quantity_holo = None, None, None
-
-        s['quantity_normal'] = quantity_normal
-        s['quantity_reverse'] = quantity_reverse
-        s['quantity_holo'] = quantity_holo
+        s['quantity_normal'] = sum(
+            [card.quantity_normal or 0 for card in Cards.objects.filter(set_name=s['name'])])
+        s['quantity_reverse'] = sum(
+            [card.quantity_reverse or 0 for card in Cards.objects.filter(set_name=s['name'])])
+        s['quantity_holo'] = sum(
+            [card.quantity_holo or 0 for card in Cards.objects.filter(set_name=s['name'])])
 
     return render(request, 'sets_index.html', {'sets': sets})
 
