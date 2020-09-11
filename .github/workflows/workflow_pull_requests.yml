@@ -59,7 +59,7 @@ jobs:
         py.test -v
 
   codecov:
-    name: Codecov Workflow
+    name: CodeCov
     runs-on: ubuntu-latest
 
     services:
