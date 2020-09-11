@@ -91,6 +91,13 @@ jobs:
         run: |
           sudo apt-get install python-dev libpq-dev
 
+      - name: Run migrations
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        run: |
+          python manage.py makemigrations
+          python manage.py migrate
+
       - name: Generate coverage report
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
