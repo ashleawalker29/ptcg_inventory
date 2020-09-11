@@ -1,0 +1,4 @@
+ignore:
+  - manage.py
+  - ptcg_inventory/asgi.py
+  - ptcg_inventory/wsgi.py
