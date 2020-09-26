@@ -11,7 +11,7 @@ class CardInventoryTests(TestCase):
         self.assertEqual(apps.get_app_config('card_inventory').name, 'card_inventory')
 
     def test_sets_index(self):
-        response = self.client.get('index/')
+        response = self.client.get('/index/')
 
         self.assertEqual(response.status_code, 200)
 
@@ -20,11 +20,11 @@ class CardInventoryTests(TestCase):
 
         for set_name in set_names:
             set_name_link = set_name.replace(' ', '_')
-            response = self.client.get('index/%s/' % set_name_link)
+            response = self.client.get('/index/%s/' % set_name_link)
 
             self.assertEqual(response.status_code, 200)
 
     def test_duplicate_cards_view(self):
-        response = self.client.get('duplicate_cards/')
+        response = self.client.get('/duplicate_cards/')
 
         self.assertEqual(response.status_code, 200)
