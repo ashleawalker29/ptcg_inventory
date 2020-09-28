@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h1> Duplicate Cards </h1>
+    <table class='table table-striped table-hover'>
+        <thead class='thead-dark'>
+            <tr>
+                <th scope='col'>Set Name</th>
+                <th scope='col'>Set Number</th>
+                <th scope='col'>Card Name</th>
+                <th scope='col'>Type</th>
+                <th scope='col'>Normal</th>
+                <th scope='col'>Reverse</th>
+                <th scope='col'>Holo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for card in cards %}
+                <tr>
+                    <th scope='row'>{{ card.set_name }}</th>
+                    <td>{{ card.card_number }}</td>
+                    <td>{{ card.card_name }}</td>
+                    <td>{{ card.card_type }}</td>
+                    <td>{{ card.quantity_normal }}</td>
+                    <td>{{ card.quantity_reverse }}</td>
+                    <td>{{ card.quantity_holo }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -26,3 +26,10 @@ def cards_by_set(request, set_name):
     return render(request, 'cards_by_set.html',
         {'cards': cards,
          'set_name': set_name_clean})
+
+def duplicate_cards(request):
+    cards = Cards.objects.all()
+    cards = [card for card in cards
+             if (card.quantity_normal + card.quantity_holo + card.quantity_reverse) > 4]
+
+    return render(request, 'duplicate_cards.html', {'cards': cards})
