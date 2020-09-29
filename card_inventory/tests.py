@@ -3,8 +3,16 @@ from django.test import TestCase
 import pokemontcgsdk
 
 from card_inventory.apps import CardInventoryConfig
+from card_inventory.models import Sets
 
 class CardInventoryTests(TestCase):
+
+    def setUp(self):
+        """ Populate the `Sets` DB with all necessary information. """
+        released_sets = pokemontcgsdk.Set.all()
+        for set_info in released_sets:
+            Sets.objects.create(set_name=set_info.name, set_code=set_info.code,
+                                max_cards=set_info.total_cards)
 
     def test_card_inventory_app(self):
         self.assertEqual(CardInventoryConfig.name, 'card_inventory')
