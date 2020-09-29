@@ -5,6 +5,7 @@
     <table class='table table-striped table-hover'>
         <thead class='thead-dark'>
             <tr>
+                <th scope='col'>Card Image</th>
                 <th scope='col'>Card Number</th>
                 <th scope='col'>Card Name</th>
                 <th scope='col'>Normal</th>
@@ -15,7 +16,8 @@
         <tbody>
             {% for card in cards %}
                 <tr>
-                    <th scope='row'>{{ card.card_number }}/{{ set_info.max_cards }}</th>
+                    <th><img src='https://images.pokemontcg.io/{{ card.set_code.set_code }}/{{ card.card_number }}.png'></th>
+                    <th>{{ card.card_number }}/{{ set_info.max_cards }}</th>
                     <td>{{ card.card_name }}</td>
                     <td>{{ card.quantity_normal }}</td>
                     <td>{{ card.quantity_reverse }}</td>
