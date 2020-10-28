@@ -9,7 +9,7 @@ manner than a spreadsheet.
 
 # Description
 A production version of the project's webpage can be found at 
-[https://ptcg-inventory.herokuapp.com/](https://ptcg-inventory.herokuapp.com/)
+[https://ptcg-inventory.herokuapp.com/](https://ptcg-inventory.herokuapp.com/).
 
 My personal collection of cards is visually displayed on the homepage via the Pokémon card sets 
 (X & Y, Sun & Moon, etc.). 
@@ -32,44 +32,45 @@ collection using the cards' images instead of the tables.
 
 ### Local Database
 The local database holds all of the information for cards that I currently own. Each entry has at least
-1 normal, reverse foil, or holo foil card.
+1 normal, reverse foil, or holo foil card so that they are differentiated from unowned cards.
 
 #### Schema
 The local database table's schema is as follows:
 
 ##### Local Table `card_inventory_cards`
-| Column Name      | Column Type      | Column Use                                      |
-|------------------|------------------|-------------------------------------------------|
-| id               | integer          | Row ID for the database table, the primary key. |
-| set_name         | enum e_set_name  | The card's associated set name.                 |
-| card_number      | text             | The card's associated card number in a set.     |
-| card_name        | text             | The card's name.                                |
-| card_type        | enum e_card_type | The card's type.                                |
-| quantity_normal  | integer          | The number of normal cards owned.               |
-| quantity_reverse | integer          | The number of reverse foil cards owned.         |
-| quantity_holo    | integer          | The number of holo foil cards owned.            |
+| Column Name      | Column Type           | Column Use                                                             |
+|------------------|-----------------------|------------------------------------------------------------------------|
+| id               | integer               | Row ID for the database table, the primary key.                        |
+| card_number      | text                  | The card's associated card number in a set.                            |
+| card_name        | text                  | The card's name.                                                       |
+| quantity_normal  | integer               | The number of normal cards owned.                                      |
+| quantity_reverse | integer               | The number of reverse foil cards owned.                                |
+| quantity_holo    | integer               | The number of holo foil cards owned.                                   |
+| set_code_id      | character varying(10) | Foreign Key connecting to `set_code` from table `card_inventory_sets`. |
 
-`set_name` and `card_type` are of type ENUM. These ENUMs hold their own unique values to prevent typos 
-and promote consistency.
+##### Local Table `card_inventory_sets`
 
-##### ENUM `e_set_name`
-This ENUM has 116 total different values that can be used for `set_name` within the `card_inventory_cards` 
-database table. These are all of the Pokémon card sets published as of writing this README. Some of these 
-set names include `Base`, `Fossil`, `Base Set 2`, etc.
+| Column Name | Column Type            | Column Use                                                                      |
+|-------------|------------------------|---------------------------------------------------------------------------------|
+| set_name    | character varying(255) | The set's name. This is a unqiue value and also the Primary Key for this table. |
+| set_code    | character varying(10)  | The set's associated short-hand code.                                           |
+| max_cards   | integer                | The max number of cards that can be found within the set.                       |
 
-##### ENUM `e_card_type`
-This ENUM has 35 total different values that can be used for `card_type` within the `card_inventory_cards` 
-database table. These are all of the types of Pokémon cards published as of writing this README. Some of 
-these types include `Grass`, `Fire`, `Water`, etc.
+##### Example `card_inventory_cards` and `card_inventory_sets` Rows
 
-##### Example `card_inventory_cards` Row
+###### `card_inventory_cards`
+| id | card_number |            card_name            | quantity_normal | quantity_reverse | quantity_holo | set_code_id |
+|----|-------------|---------------------------------|-----------------|------------------|---------------|-------------|
+|  1 | 8           | Machamp                         |               0 |                0 |             1 | base1       |
 
-| id | set_name | card_number | card_name | card_type | quantity_normal | quantity_reverse | quantity_holo |
-|----|----------|-------------|-----------|-----------|-----------------|------------------|---------------|
-| 1  | Base     | 1/102       | Alakazam  | Pyschic   | 1               | 0                | 0             |
+###### `card_inventory_sets`
+| set_name | set_code | max_cards |
+|----------|----------|-----------|
+| Base     | base1    |       102 |
 
-This example row indicates that the collection includes one (1) normal copy of a Psychic Alakazam card from
-the Base set.
+These example rows indicate that the collection includes one (1) holographic copy of a Machamp card with the set code of
+`base1` within the first table, `card_inventory_cards`. This `base1` value is mapped to the set named Base that has the
+maximum of 102 cards within the second table, `card_inventory_sets`.
 
 # Installation
 Clone this repository locally. Navigate to the root directory and then run through the following steps.
@@ -103,12 +104,6 @@ $ pip3 install -r requirements.txt
 ```
 This installs the required packages within your venv.
 
-## Testing
-To run all tests locally, run the following command:
-``` bash
-$ python3 manage.py test
-```
-
 ## Local Database
 You will need your own local database to connect to the django framework. To set this up, run the following commands:
 ``` sql
@@ -118,4 +113,10 @@ $ CREATE USER <username> WITH PASSWORD <password>;
 $ GRANT ALL PRIVLEGES ON DATABASES ptcg_inventory TO <username>;
 $ \q
 $ python3 manage.py migrate
+```
+
+## Testing
+To run all tests locally, run the following command:
+``` bash
+$ python3 manage.py test
 ```
